@@ -1,0 +1,87 @@
+#include "monty.h"
+
+/**
+ * add_to_stack - to add Node To Stack
+ *
+ * @new_node: Pointer To New Node
+ *
+ * @ln: int Representing Line No. Of opcode.
+ */
+
+void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int ln)
+{
+	stack_t *tmp;
+
+	if (new_node == NULL || *new_node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *new_node;
+		return;
+	}
+	tmp = head;
+	head = *new_node;
+	head->next = tmp;
+	tmp->prev = head;
+}
+
+/**
+ * print_stack - to add Node To Stack
+ *
+ * @stack: a Pointer To Pointer that Pointing To the Top Node Of Stack
+ *
+ * @line_number: Line No. Of opcode.
+ */
+
+void print_stack(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	(void) line_number;
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	tmp = *stack;
+	while (tmp != NULL)
+	{
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
+	}
+}
+
+/**
+ * pop_top - to add Node To Stack
+ *
+ * @stack: a Pointer To Pointer that Pointing To the Top Node Of Stack
+ *
+ * @line_number: int Representing Line No. Of opcode.
+ */
+
+void pop_top(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	if (stack == NULL || *stack == NULL)
+		more_err(7, line_number);
+
+	tmp = *stack;
+	*stack = tmp->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(tmp);
+}
+
+
+/**
+ * print_top - to Print Top Node Of Stack
+ *
+ * @stack: a Pointer To Pointer that Pointing To the Top Node Of Stack
+ *
+ * @line_number: int Representing Line No. Of opcode.
+ */
+
+void print_top(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || *stack == NULL)
+		more_err(6, line_number);
+	printf("%d\n", (*stack)->n);
+}
