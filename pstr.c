@@ -14,8 +14,8 @@
 
 void f_pstr(stack_t **head, unsigned int counter)
 {
-	(void)counter;
 	stack_t *h;
+	(void)counter;
 
 	h = *head;
 	while (h)

@@ -10,9 +10,8 @@
  * Return: none Return
 */
 
-void f_queue(stack_t **head, unsigned int counter)
+void f_queue(stack_t **head)
 {
-	(void)head;
 	(void)head;
 	bus.lifi = 1;
 }
